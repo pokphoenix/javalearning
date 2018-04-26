@@ -58,41 +58,6 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/test")
-    public String test(Locale locale, Model model) {
-
-        String master = "abcdefghijklmnopqrstuvwxyz";
-        master.length();
-        System.out.println(master.length());
-
-        String page = "POK AHA PHIX PHOENIX";
-
-        String[] arrays = page.split(" ", -1);
-        for (String array : arrays) {
-
-            String name = array.toLowerCase();
-
-            int l = name.length();
-            // System.out.println("length : " + l);
-            Integer nameValue = 0;
-            for (int i = 0; i < l; i++) {
-                int index = (master.indexOf(name.charAt(i))) + 1;
-                System.out.println(name.charAt(i) + " " + index);
-                nameValue += index;
-            }
-            System.out.println("get name : " + array + " length : " + l + " value : " + nameValue);
-
-        }
-
-        // model.addAttribute("customFunction", true);
-        return "home";
-    }
-
-    long[] fix(long[] a3) {
-        a3[1] = 7;
-        return a3;
-    }
-
     @GetMapping("/test-string-to-double")
     public String testStringToDouble(Locale locale, Model model) {
         System.out.println("===== String to Double =====");
@@ -172,7 +137,38 @@ public class HomeController {
         // sum
         System.out.println(sum);
 
+        Float f1 = new Float("3.0");
+        int x = f1.intValue();
+        byte b = f1.byteValue();
+        double d = f1.doubleValue();
+        System.out.println("int + byte + type");
+        System.out.println(x + b + d);
+
+        System.out.println("String equal object");
+        String s = "hello";
+        Object o = s;
+        if (o.equals(s)) {
+            System.out.println("A");
+        } else {
+            System.out.println("B");
+        }
+        if (s.equals(o)) {
+            System.out.println("C");
+        } else {
+            System.out.println("D");
+        }
+
+        int n = 153;// It is the number to check armstrong
+        int temp = n;
+        n = 7;
+        System.out.println(n + " : " + temp);
+
         return "home";
+    }
+
+    long[] fix(long[] a3) {
+        a3[1] = 7;
+        return a3;
     }
 
     private static int copyClone(int[] array) {
@@ -189,35 +185,6 @@ public class HomeController {
     private static int copyCopyOf(int[] array) {
         int[] copy = Arrays.copyOf(array, array.length);
         return copy[copy.length - 1];
-    }
-
-    @GetMapping("/palindrome")
-    public String index(Locale locale, Model model) {
-        String word = "Deleveled";
-        word = word.toLowerCase();
-        String reverse = "";
-        int length = word.length();
-
-        for (int i = length - 1; i >= 0; i--)
-            reverse = reverse + word.charAt(i);
-
-        System.out.println("word :" + word);
-        System.out.println("reverse :" + reverse);
-
-        if (word.equals(reverse))
-            System.out.println("true :" + true);
-        else
-            System.out.println("false :" + false);
-
-        String a = "ABCD";
-        String b = a.toLowerCase();
-        String c = b.replace('a', 'd');
-        String d = c.replace('b', 'c');
-
-        System.out.println(c);
-        System.out.println(d);
-
-        return "contact/add";
     }
 
     @GetMapping("/convert")
