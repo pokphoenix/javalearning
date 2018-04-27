@@ -58,6 +58,12 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/main")
+    public String main(Locale locale, Model model) {
+        model.addAttribute("customFunction", true);
+        return "layouts/main";
+    }
+
     @GetMapping("/test-string-to-double")
     public String testStringToDouble(Locale locale, Model model) {
         System.out.println("===== String to Double =====");
